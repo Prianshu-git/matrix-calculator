@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🧮 Matrix Calculator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container py-5">
+    <h1 class="text-center mb-4">🧮 Matrix Calculator</h1>
+
+    <form method="POST">
+      <div class="row mb-3">
+        <div class="col text-center">
+          <label>🔢 Rows</label>
+          <input type="number" name="rows" value="3" min="1" max="5" class="form-control w-50 mx-auto">
+        </div>
+        <div class="col text-center">
+          <label>🔢 Columns</label>
+          <input type="number" name="cols" value="3" min="1" max="5" class="form-control w-50 mx-auto">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h5>🅰️ Matrix A</h5>
+          {% for i in range(3) %}
+            <div class="d-flex">
+              {% for j in range(3) %}
+                <input type="text" class="form-control m-1" name="a_{{i}}_{{j}}" value="{{ matrix_a[i][j] if matrix_a is not none else '' }}">
+              {% endfor %}
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="col">
+          <h5>🅱️ Matrix B</h5>
+          {% for i in range(3) %}
+            <div class="d-flex">
+              {% for j in range(3) %}
+                <input type="text" class="form-control m-1" name="b_{{i}}_{{j}}" value="{{ matrix_b[i][j] if matrix_b is not none else '' }}">
+              {% endfor %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="text-center my-3">
+        <!-- Matrix Operations -->
+        <button name="operation" value="add" class="btn btn-success m-1">➕ Add</button>
+        <button name="operation" value="subtract" class="btn btn-danger m-1">➖ Subtract</button>
+        <button name="operation" value="multiply" class="btn btn-primary m-1">✖️ Multiply</button>
+        
+        <!-- Matrix A Operations -->
+        <div class="my-2">
+          <button name="operation" value="transpose_a" class="btn btn-warning m-1">🔁 Transpose A</button>
+          <button name="operation" value="determinant_a" class="btn btn-dark m-1">🧮 Det A</button>
+          <button name="operation" value="inverse_a" class="btn btn-info m-1">🧊 Inverse A</button>
+        </div>
+        
+        <!-- Matrix B Operations -->
+        <div class="my-2">
+          <button name="operation" value="transpose_b" class="btn btn-warning m-1">🔁 Transpose B</button>
+          <button name="operation" value="determinant_b" class="btn btn-dark m-1">🧮 Det B</button>
+          <button name="operation" value="inverse_b" class="btn btn-info m-1">🧊 Inverse B</button>
+        </div>
+      </div>
+    </form>
+
+    {% if result is not none %}
+      <div class="alert alert-info text-center">
+        <h5>🧾 Result ({{ operation.replace('_', ' ').title() }})</h5>
+        {% if operation in ['determinant_a'] %}
+          {{ result }}
+        {% else %}
+          <pre>{{ result | safe }}</pre>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center py-4 mt-4 text-muted border-top">
+    <p class="mb-0">
+      Made with ❤️ by 
+      <a href="https://github.com/Prianshu-git" class="text-decoration-none" target="_blank">
+        Prianshu-git
+      </a>
+    </p>
+  </footer>
+</body>
+</html>

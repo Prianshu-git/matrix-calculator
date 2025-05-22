@@ -1,0 +1,11 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
+h5 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+input[type="text"] {
+  width: 60px;
+  text-align: center;
+}

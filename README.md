@@ -33,5 +33,8 @@ pip install -r requirements.txt
 ```bash
 python app.py
 ```
+UI-Screenshot 
+![Screenshot 2025-05-22 at 12-16-51 🧮 Matrix Calculator](https://github.com/user-attachments/assets/5d84c3e5-5745-40f7-b596-218ade43bb5e)
+
 
 ## Made with ❤️ by [Prianshu-git](https://github.com/Prianshu-git)
